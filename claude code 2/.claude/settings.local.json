@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\amir hossine\\\\Desktop\\\\out projeck\\\\my brand\\\\sait\\\\claude code 2\\\\config\")",
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\amir hossine\\\\Desktop\\\\out projeck\\\\my brand\\\\sait\\\\claude code 2\\\\database\")",
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\amir hossine\\\\Desktop\\\\out projeck\\\\my brand\\\\sait\\\\claude code 2\\\\public\\\\uploads\")",
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\amir hossine\\\\Desktop\\\\out projeck\\\\my brand\\\\sait\\\\claude code 2\\\\public\\\\assets\\\\fonts\")",
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\amir hossine\\\\Desktop\\\\out projeck\\\\my brand\\\\sait\\\\claude code 2\\\\public\\\\assets\\\\css\")",
+      "PowerShell(ls \"C:\\\\Users\\\\amir hossine\\\\Desktop\\\\out projeck\\\\my brand\\\\sait\\\\claude code 2\\\\app\\\\Controllers\\\\\")",
+      "PowerShell(ls \"C:\\\\Users\\\\amir hossine\\\\Desktop\\\\out projeck\\\\my brand\\\\sait\\\\claude code 2\\\\app\\\\Helpers\\\\\")",
+      "PowerShell(ls \"C:\\\\Users\\\\amir hossine\\\\Desktop\\\\out projeck\\\\my brand\\\\sait\\\\claude code 2\\\\app\\\\Views\\\\admin\\\\\" -Recurse -File)",
+      "Bash(php --version)"
+    ]
+  }
+}

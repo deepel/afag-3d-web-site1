@@ -1,0 +1,11 @@
+# Block PHP execution in uploads directory
+<FilesMatch "\.php$">
+    Require all denied
+</FilesMatch>
+
+# Block dangerous file types
+<FilesMatch "\.(php|php3|php4|php5|php7|phtml|pl|py|jsp|asp|sh|cgi|exe|bat|cmd)$">
+    Require all denied
+</FilesMatch>
+
+Options -Indexes -ExecCGI

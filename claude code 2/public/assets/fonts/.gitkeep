@@ -1,0 +1,21 @@
+Place woff2 font files here:
+
+Vazirmatn:
+  Vazirmatn-Light.woff2       (weight 300)
+  Vazirmatn-Regular.woff2     (weight 400)
+  Vazirmatn-Medium.woff2      (weight 500)
+  Vazirmatn-Bold.woff2        (weight 700)
+  Vazirmatn-ExtraBold.woff2   (weight 800)
+  Vazirmatn-Black.woff2       (weight 900)
+
+Space Grotesk:
+  SpaceGrotesk-Medium.woff2   (weight 500)
+  SpaceGrotesk-Bold.woff2     (weight 700)
+
+Space Mono:
+  SpaceMono-Regular.woff2     (weight 400)
+  SpaceMono-Bold.woff2        (weight 700)
+
+Download from:
+  Vazirmatn: https://github.com/rastikerdar/vazirmatn/releases
+  Space Grotesk / Space Mono: https://fonts.google.com (download families, convert to woff2)

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <rect width="120" height="120" fill="#141210"/>
+  <!-- outer cube – bottom layer -->
+  <polygon points="20,86 60,106 60,118 20,98"  fill="#EA580C"/>
+  <polygon points="100,86 60,106 60,118 100,98" fill="#C2410C"/>
+  <polygon points="60,66 100,86 60,106 20,86"   fill="#FDBA74" stroke="#9A3412" stroke-width="0.5"/>
+  <!-- middle layer -->
+  <polygon points="32,74 60,88 60,100 32,86"    fill="#EA580C"/>
+  <polygon points="88,74 60,88 60,100 88,86"    fill="#C2410C"/>
+  <polygon points="60,60 88,74 60,88 32,74"     fill="#FDBA74" stroke="#9A3412" stroke-width="0.5"/>
+  <!-- top layer -->
+  <polygon points="44,62 60,70 60,82 44,74"     fill="#EA580C"/>
+  <polygon points="76,62 60,70 60,82 76,74"     fill="#C2410C"/>
+  <!-- molten top face -->
+  <polygon points="60,54 76,62 60,70 44,62"     fill="#FFEDD5" stroke="#9A3412" stroke-width="0.5"/>
+</svg>

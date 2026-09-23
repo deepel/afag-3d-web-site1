@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /uploads/
+Disallow: /storage/
+Disallow: /config/
+Disallow: /database/
+Disallow: /app/
+Disallow: /vendor/
+
+# Common bot crawl traps
+Disallow: /*?*page=
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+Sitemap: https://afag3d.com/sitemap.xml

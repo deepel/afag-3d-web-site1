@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#1C1916"/>
+  <defs>
+    <pattern id="grid3" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(245,242,236,0.05)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow3" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="rgba(234,88,12,0.18)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#grid3)"/>
+  <rect width="600" height="400" fill="url(#glow3)"/>
+  <!-- Nested 3D diamond / portfolio icon -->
+  <g transform="translate(300,200)">
+    <!-- Outer -->
+    <polygon points="0,-90 90,0 0,90 -90,0" fill="none" stroke="rgba(234,88,12,0.3)" stroke-width="1.5"/>
+    <!-- Middle -->
+    <polygon points="0,-60 60,0 0,60 -60,0" fill="none" stroke="rgba(234,88,12,0.55)" stroke-width="1.5"/>
+    <!-- Inner -->
+    <polygon points="0,-30 30,0 0,30 -30,0" fill="rgba(234,88,12,0.15)" stroke="#EA580C" stroke-width="2"/>
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="6" fill="#FDBA74"/>
+    <!-- Cross lines -->
+    <line x1="-90" y1="0" x2="90" y2="0" stroke="rgba(234,88,12,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="0" y1="-90" x2="0" y2="90" stroke="rgba(234,88,12,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
+  </g>
+  <text x="300" y="330" text-anchor="middle" fill="#A39A8E" font-size="14" font-family="Tahoma,sans-serif">تصویر پروژه</text>
+</svg>

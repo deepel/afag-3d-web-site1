@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#1C1916"/>
+  <!-- Grid background -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(245,242,236,0.07)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#grid)"/>
+  <!-- 3D cube icon -->
+  <g transform="translate(200,200)">
+    <polygon points="-60,0 0,-34 60,0 0,34" fill="none" stroke="#EA580C" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="-60,0 0,34 0,80 -60,46" fill="rgba(194,65,12,0.4)" stroke="#C2410C" stroke-width="1.5"/>
+    <polygon points="60,0 0,34 0,80 60,46" fill="rgba(154,52,18,0.4)" stroke="#9A3412" stroke-width="1.5"/>
+    <line x1="-60" y1="0" x2="-60" y2="46" stroke="#C2410C" stroke-width="1.5"/>
+    <line x1="60" y1="0" x2="60" y2="46" stroke="#9A3412" stroke-width="1.5"/>
+  </g>
+  <!-- Label -->
+  <text x="200" y="320" text-anchor="middle" fill="#A39A8E" font-size="14" font-family="Tahoma,sans-serif">تصویر محصول</text>
+</svg>
