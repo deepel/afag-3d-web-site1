@@ -72,7 +72,19 @@
       <span class="brand-name">afag<span class="brand-accent">3d</span></span>
     </a>
 
-    <ul class="nav-links" role="list">
+    <ul class="nav-links" id="nav-links" role="list">
+      <li class="nav-drawer-header">
+        <a href="<?= BASE_URL ?>/" class="nav-drawer-brand" aria-label="افگ تری‌دی">
+          <?php
+          $logoClass = 'mark';
+          include __DIR__ . '/../partials/logo-mark.php';
+          ?>
+          <span>afag<b>3d</b></span>
+        </a>
+        <button class="nav-drawer-close" id="navClose" aria-label="بستن منو">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </li>
       <li><a href="<?= BASE_URL ?>/" class="nav-link <?= Url::isActive('/') && Url::current() === BASE_URL . '/' ? 'active' : '' ?>">خانه</a></li>
       <li><a href="<?= BASE_URL ?>/services" class="nav-link <?= Url::isActive('/services') ? 'active' : '' ?>">خدمات</a></li>
       <li><a href="<?= BASE_URL ?>/shop/models" class="nav-link <?= Url::isActive('/shop/models') ? 'active' : '' ?>">فروشگاه مدل‌ها</a></li>
@@ -80,6 +92,10 @@
       <li><a href="<?= BASE_URL ?>/print-order" class="nav-link <?= Url::isActive('/print-order') ? 'active' : '' ?>">سفارش چاپ</a></li>
       <li><a href="<?= BASE_URL ?>/portfolio" class="nav-link <?= Url::isActive('/portfolio') ? 'active' : '' ?>">نمونه‌کارها</a></li>
       <li><a href="<?= BASE_URL ?>/blog" class="nav-link <?= Url::isActive('/blog') ? 'active' : '' ?>">وبلاگ</a></li>
+      <?php
+      $authContext = 'drawer';
+      include __DIR__ . '/../partials/nav-auth.php';
+      ?>
     </ul>
 
     <div class="nav-actions">
@@ -93,28 +109,12 @@
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
 
-      <?php if (Auth::check()): ?>
-        <div class="nav-user-menu">
-          <button class="btn-ghost nav-user-btn" id="userMenuBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span><?= htmlspecialchars(Auth::name(), ENT_QUOTES) ?></span>
-          </button>
-          <div class="user-dropdown" id="userDropdown" hidden>
-            <?php if (Auth::isAdmin()): ?>
-              <a href="<?= BASE_URL ?>/admin" class="dropdown-item">پنل مدیریت</a>
-              <hr class="dropdown-divider">
-            <?php endif; ?>
-            <a href="<?= BASE_URL ?>/account" class="dropdown-item">حساب کاربری</a>
-            <a href="<?= BASE_URL ?>/account/orders" class="dropdown-item">سفارش‌های من</a>
-            <a href="<?= BASE_URL ?>/account/print-orders" class="dropdown-item">سفارشات چاپ</a>
-            <hr class="dropdown-divider">
-            <a href="<?= BASE_URL ?>/logout" class="dropdown-item dropdown-item--danger">خروج</a>
-          </div>
-        </div>
-      <?php else: ?>
-        <a href="<?= BASE_URL ?>/login" class="btn btn-ghost">ورود</a>
-        <a href="<?= BASE_URL ?>/register" class="btn btn-primary">ثبت‌نام</a>
-      <?php endif; ?>
+      <div class="nav-auth">
+        <?php
+        $authContext = 'top';
+        include __DIR__ . '/../partials/nav-auth.php';
+        ?>
+      </div>
 
       <button class="hamburger" id="hamburger" aria-label="منو" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
@@ -122,6 +122,9 @@
     </div>
   </div>
 </nav>
+
+<!-- Mobile drawer overlay (mirrors the admin sidebar overlay) -->
+<div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
 <!-- ░░░ POPUP ░░░ -->
 <?php if (!empty($siteData['popup_enabled']) && $siteData['popup_enabled'] === '1'): ?>

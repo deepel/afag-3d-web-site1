@@ -57,24 +57,51 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ── Hamburger / mobile nav ──────────────────────────────── */
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.querySelector('.nav-links');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
+  // Same pattern as the admin sidebar: drawer + header close + overlay.
+  // Single source of truth for the drawer breakpoint.
+  // This MUST stay identical to the CSS `@media (max-width: 900px)` rules.
+  const MOBILE_NAV_QUERY = window.matchMedia('(max-width: 900px)');
+  const isMobileNav = () => MOBILE_NAV_QUERY.matches;
+
+  const hamburger  = document.getElementById('hamburger');
+  const navLinks   = document.getElementById('nav-links');
+  const navClose   = document.getElementById('navClose');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function setMobileNav(open) {
+    if (!navLinks) return;
+    navLinks.classList.toggle('open', open);
+    if (hamburger) {
       hamburger.classList.toggle('open', open);
       hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    if (navOverlay) navOverlay.classList.toggle('visible', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      setMobileNav(!navLinks.classList.contains('open'));
     });
-    // Close on outside click
-    document.addEventListener('click', e => {
-      if (!nav.contains(e.target)) {
-        navLinks.classList.remove('open');
-        hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
+    if (navClose)    navClose.addEventListener('click', () => setMobileNav(false));
+    if (navOverlay)  navOverlay.addEventListener('click', () => setMobileNav(false));
+    // Close when a drawer link is chosen
+    navLinks.addEventListener('click', e => {
+      if (e.target.closest('a')) setMobileNav(false);
     });
+    // Close on Escape (only while the drawer is a mobile feature)
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && isMobileNav()) setMobileNav(false);
+    });
+    // Reset open state + body scroll lock when crossing into desktop layout
+    const onBreakpointChange = () => {
+      if (!isMobileNav()) setMobileNav(false);
+    };
+    if (typeof MOBILE_NAV_QUERY.addEventListener === 'function') {
+      MOBILE_NAV_QUERY.addEventListener('change', onBreakpointChange);
+    } else if (typeof MOBILE_NAV_QUERY.addListener === 'function') {
+      MOBILE_NAV_QUERY.addListener(onBreakpointChange); // legacy Safari
+    }
   }
 
   /* ── User dropdown ───────────────────────────────────────── */

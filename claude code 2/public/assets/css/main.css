@@ -313,6 +313,16 @@ input, textarea, select { font: inherit; direction: rtl; }
   display: flex; align-items: center; gap: 10px;
 }
 
+/* Auth controls: desktop top-bar version vs. standalone mobile drawer copy.
+   The drawer variant is hidden by default and only becomes visible inside
+   the mobile drawer (max-width: 900px). */
+.nav-auth {
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-auth-drawer {
+  display: none;
+}
+
 /* Cart icon */
 .nav-cart {
   position: relative;
@@ -383,6 +393,33 @@ input, textarea, select { font: inherit; direction: rtl; }
 .dropdown-item--danger:hover { color: #ef4444; }
 .dropdown-divider { border: none; border-top: 1px solid var(--line); margin: 4px 0; }
 
+/* Drawer header + close (mirrors the admin sidebar header) */
+.nav-drawer-header {
+  display: none;
+}
+.nav-drawer-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--grot); font-weight: 700;
+}
+.nav-drawer-brand .mark { width: 32px; height: 32px; }
+.nav-drawer-close {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius);
+  color: var(--gray);
+  transition: color var(--transition), background var(--transition);
+}
+.nav-drawer-close:hover { color: var(--bone); background: var(--line); }
+
+/* Mobile drawer overlay — same pattern as .sidebar-overlay in admin */
+.nav-overlay {
+  position: fixed; inset: 0; z-index: 920;
+  background: rgba(0,0,0,.5);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--transition);
+}
+.nav-overlay.visible { opacity: 1; pointer-events: all; }
+
 /* Hamburger */
 .hamburger {
   display: none; flex-direction: column;
@@ -400,33 +437,47 @@ input, textarea, select { font: inherit; direction: rtl; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 900px) {
+  /* The nav links become a full-height side drawer, exactly like the
+     admin sidebar: fixed on the right, sliding in via transform. */
   .nav-links {
-    position: fixed; top: 68px; right: 0; bottom: 0;
+    position: fixed; inset-block: 0; right: 0;
     width: min(300px, 84vw);
     background: var(--bg2);
     border-inline-start: 1px solid var(--line);
     flex-direction: column; align-items: stretch; gap: 4px;
-    padding: 20px 14px;
+    padding: 0 14px 20px;
     transform: translateX(100%);
     transition: transform var(--transition);
     overflow-y: auto;
     z-index: 950;
-    visibility: hidden;        /* keep it out of the way while closed */
+    visibility: hidden;        /* out of the way while closed */
   }
   .nav-links.open {
     transform: translateX(0);
     visibility: visible;
-    /* full-screen dim behind the panel — pure CSS, no extra markup */
-    box-shadow: -10px 0 30px rgba(0,0,0,.35), 0 0 0 100vmax rgba(0,0,0,.55);
+    box-shadow: var(--shadow);
   }
+  .nav-drawer-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 4px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 6px;
+    flex-shrink: 0;
+  }
+  .nav-drawer-close { display: flex; }
   .nav-link { padding: 13px 16px; font-size: 1rem; }
-  .hamburger { display: flex; position: relative; z-index: 960; }
-  /* solid bar whenever the menu is open, even at the top of the page */
-  .nav:has(.nav-links.open) {
-    background: var(--nav-bg);
-    backdrop-filter: blur(20px);
-    border-color: var(--line);
+  .hamburger { display: flex; }
+  /* move the auth controls out of the cramped top bar and into the drawer */
+  .nav-auth { display: none; }
+  .nav-auth-drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
   }
+  .nav-auth-drawer .btn { justify-content: center; }
 }
 
 /* ─── Flash messages ─────────────────────────────────────── */
